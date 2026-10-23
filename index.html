@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex to RGB Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hex to RGB Converter</h1>
+        <input type="text" id="hexInput" placeholder="Enter hex color (e.g. #ff00aa or #f0a)">
+        <button onclick="convertHexToRgb()">Convert</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="math.js"></script>
+    <script>
+        function convertHexToRgb() {
+            const hexInput = document.getElementById('hexInput').value;
+            const resultDiv = document.getElementById('result');
+
+            try {
+                const rgb = hexToRgb(hexInput);
+                resultDiv.textContent = `RGB: (${rgb.r}, ${rgb.g}, ${rgb.b})`;
+            } catch (error) {
+                resultDiv.textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
